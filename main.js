@@ -16,7 +16,7 @@ window.addEventListener('load', () => {
   for (let i = 0; i <= paragContent.length - 1; i++) {
     htmlContent.push(
       `<div class="item">
-        <input type="checkbox" />
+        <input type="checkbox" data-index="${i}"/>
         <p>${paragContent[i]}</p>
       </div>`
     );
@@ -25,16 +25,16 @@ window.addEventListener('load', () => {
 
   const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
-  const checkboxCopy = Array.prototype.slice.call(checkboxes, 0);
+  const checkboxCopy = [...checkboxes];
 
   let lastCheckedIdx;
   function handleCheck(e) {
-    const currentIndex = checkboxCopy.indexOf(this);
-
-    let sorted = [currentIndex, lastCheckedIdx].sort((a, b) => a - b);
-    let [smallNum, largeNum] = [sorted[0], sorted[1]];
+    const currentIndex = this.dataset.index;
 
     if (e.shiftKey && this.checked) {
+      let sorted = [currentIndex, lastCheckedIdx].sort((a, b) => a - b);
+      let [smallNum, largeNum] = [sorted[0], sorted[1]];
+
       let selectedTicks = checkboxCopy.slice(smallNum, largeNum);
 
       selectedTicks.forEach((selected) => (selected.checked = true));
