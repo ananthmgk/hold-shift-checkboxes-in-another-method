@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
 
     if (e.shiftKey && this.checked) {
       let sorted = [currentIndex, lastCheckedIdx].sort((a, b) => a - b);
-      let [smallNum, largeNum] = [sorted[0], sorted[1]];
+      let [smallNum, largeNum] = sorted;
 
       let selectedTicks = checkboxCopy.slice(smallNum, largeNum);
 
