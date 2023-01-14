@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
 
   const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
-  const checkboxCopy = [...checkboxes];
+  const checkboxArray = [...checkboxes];
 
   let lastCheckedIdx;
   function handleCheck(e) {
@@ -35,7 +35,7 @@ window.addEventListener('load', () => {
       let sorted = [currentIndex, lastCheckedIdx].sort((a, b) => a - b);
       let [smallNum, largeNum] = sorted;
 
-      let selectedTicks = checkboxCopy.slice(smallNum, largeNum);
+      let selectedTicks = checkboxArray.slice(smallNum, largeNum);
 
       selectedTicks.forEach((selected) => (selected.checked = true));
     }
